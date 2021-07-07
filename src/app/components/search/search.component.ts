@@ -8,16 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   NuevosArtistas: any[] = [];
+  loading: boolean = false;
   constructor(private spotifyService: SpotifyService) {}
 
   ngOnInit(): void {}
 
-  buscar(termino: string) {
-    console.log(termino);
-
-    this.spotifyService.getArtista(termino).subscribe((artistas: any) => {
+  buscar(artista: string) {
+    this.loading = true;
+    this.spotifyService.getArtistas(artista).subscribe((artistas: any) => {
       this.NuevosArtistas = artistas;
-      console.log(this.NuevosArtistas);
+      this.loading = false;
     });
   }
 }

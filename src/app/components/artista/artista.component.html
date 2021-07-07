@@ -1,1 +1,63 @@
-<p>artista works!</p>
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="card puntero">
+  <img ngf [src]="artista.images | noImage" class="card-img-top" alt="..." />
+
+  <div class="card-body">
+    <h5 class="card-title">{{ artista.name }}</h5>
+    <p>
+      <a [href]="artista.external_urls['spotify']"
+        >Ir a la página del artista</a
+      >
+    </p>
+    <p class="card-text">
+      <span
+        class="badge rounded-pill bg-primary"
+        *ngFor="let item of artista.genres"
+        >{{ item }}</span
+      >
+    </p>
+  </div>
+  <button
+    class="btn btn-danger m-5"
+    [routerLink]="['/home']"
+    routerLinkActive="router-link-active"
+  >
+    Regresar
+  </button>
+</div>
+
+<div class="row m-5">
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <th scope="col">foto</th>
+        <th scope="col">album</th>
+        <th scope="col">cancion</th>
+        <th scope="col">Vista Previa</th>
+      </thead>
+      <tbody *ngFor="let item of topTracks">
+        <td>
+          <img
+            src="{{ item.album.images | noImage }} "
+            alt=""
+            srcset=""
+            style="width: 150px"
+          />
+        </td>
+        <td>{{ item.album.name }}</td>
+        <td>{{ item.name }}</td>
+        <td>
+          <iframe
+            [src]="item.uri | domseguro: 'https://open.spotify.com/embed?uri='"
+            width="200"
+            height="280"
+            frameborder="0"
+            allowtransparency="true"
+            allow="encrypted-media"
+                      ></iframe>
+        </td>
+      </tbody>
+    </table>
+  </div>
+</div>

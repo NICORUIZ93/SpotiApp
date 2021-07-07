@@ -1,3 +1,4 @@
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -22,6 +23,7 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
     ArtistaComponent,
     NavbarComponent,
     NoImagePipe,
+    DomseguroPipe,
     TarjetaComponent,
     LoadingComponent,
   ],

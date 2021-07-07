@@ -10,5 +10,7 @@
   </div>
 </div>
 
-<app-tarjeta [items]="NuevosArtistas"></app-tarjeta>
+<app-loading *ngIf="loading">loading..</app-loading>
+
+<app-tarjeta *ngIf="!loading" [items]="NuevosArtistas"></app-tarjeta>
 
